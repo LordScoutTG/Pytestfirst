@@ -12,6 +12,8 @@ lostYourPasswordLink = (By.CSS_SELECTOR, "[href=\"https://litecart.info/reset_pa
 
 
 class AccountPage(BasePage):
+    def __init__(self, browser):
+        super().__init__(browser)
 
     # @Step("Getting text from warning message")
     def getNotLoggedInError(self):

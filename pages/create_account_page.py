@@ -8,6 +8,8 @@ requiredCreateAccountFieldsText = ("First Name", "Last Name", "Country", "Email"
 
 
 class CreateAccountPage(BasePage):
+    def __init__(self, browser):
+        super().__init__(browser)
 
     # @Step("Getting Title Create Account Page")
     def getCreateAccountTitle(self):

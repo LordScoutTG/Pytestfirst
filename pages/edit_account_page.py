@@ -6,6 +6,8 @@ editAccountTitleText = "Account"
 
 
 class EditAccountPage(BasePage):
+    def __init__(self, browser):
+        super().__init__(browser)
 
     # @Step("Getting Title Edit Account Page")
     def getEditAccountTitle(self):

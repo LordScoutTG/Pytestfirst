@@ -13,6 +13,8 @@ requiredContactUsFieldsText = ("First Name", "Last Name", "Email Address", "Subj
 
 
 class CustomerServicePage(BasePage):
+    def __init__(self, browser):
+        super().__init__(browser)
 
     # @Step("Getting Title Customer Service Page")
     def getCustomerServiceTitle(self):

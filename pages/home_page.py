@@ -25,7 +25,8 @@ delay = 3
 
 
 class HomePage(BasePage):
-
+    def __init__(self, browser):
+        super().__init__(browser)
 
     def getMostPopularDuckLocator(duckName):
         return By.XPATH, "//section[@id=\"box-popular-products\"]//a[@title='%s']".format(duckName)

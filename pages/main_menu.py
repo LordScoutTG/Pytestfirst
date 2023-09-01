@@ -13,6 +13,8 @@ delay = 3
 
 
 class MainMenu(BasePage):
+    def __init__(self, browser):
+        super().__init__(browser)
 
     # @Step("Clicking on Rubber Ducks link at Main Menu")
     def clickMainMenuRDLink(self, browser):
