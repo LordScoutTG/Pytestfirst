@@ -34,7 +34,7 @@ class HomePage(BasePage):
     # @Step("Verify successful login")
     def successMessageIsVisible(self):
         # LOG.info("Checking success message");
-        return self.find(successMessage).isDisplayed()
+        return self.find(successMessage).is_displayed()
 
     # @Step("Clicking on regional settings")
     def regSettingsChangeLinkClick(self):

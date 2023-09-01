@@ -29,9 +29,9 @@ class RubberDucksPage(BasePage):
         return self.find(rubberDuckTitle).isDisplayed()
 
     # @Step("Clicking on Duck at Duck Page")
-    def clickOnDuck(self, duckName):
+    def clickOnDuck(self, duckName, browser):
         # LOG.info("Clicking on Duck at Duck Page");
-        self.find(getDuckLocator(duckName)).click()
+        self.find(RubberDucksPage.getDuckLocator(duckName, browser)).click()
 
     # @Step("Clicking on Duck Quantity Input")
     def clickOnQuantityInput(self):
