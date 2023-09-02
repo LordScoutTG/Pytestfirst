@@ -1,6 +1,8 @@
+import logging
+
 from selenium.webdriver.support.wait import WebDriverWait
 
-from pages.base_page import BasePage
+from page.base_page import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -33,26 +35,26 @@ class LoginPage(BasePage):
         self.accept_cookies_button_click()
         self.sign_in_button().click()
         WebDriverWait(browser, delay).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "[name=\"login_form\"] [name=\"email\"]")))
-        # LOG.debug("Writing login email")
+        logging.debug('Writing login email')
         self.find(email_input_box).send_keys(email)
 
     def set_password_input(self, password):
-        # LOG.debug("Writing login password");
+        logging.debug('Writing login password')
         self.find(password_input_box).send_keys(password)
 
     def click_login_button(self):
-        # LOG.debug("Clicking login button");
+        logging.debug('Clicking login button')
         self.find(login_button).click()
 
     # @Step("Login step with email: {1}, password: {2}, for method: {method}")
     def attempt_login(self, email, password, browser):
-        # LOG.info("Attempting login");
+        logging.info('Attempting login')
         self.set_email_input(email, browser)
         self.set_password_input(password)
         self.click_login_button()
 
     def un_success_message_is_visible(self):
-        # LOG.info("Checking unsuccessful message");
+        logging.info('Checking unsuccessful message')
         return self.find(un_success_message).is_displayed()
 
 
@@ -61,10 +63,10 @@ class LoginPage(BasePage):
 
     # @Step("Clicking on Sign In menu")
     def sign_in_menu_click(self):
-        # LOG.info("Clicking on Sign In menu");
+        logging.info('Clicking on Sign In menu')
         self.find(sign_in_buttom).click()
 
     # @Step("Accepting Cookies")
     def accept_cookies_button_click(self):
-        # LOG.info("Accepting Cookies");
+        logging.info('Accepting Cookies')
         self.find(accept_cookies).click()

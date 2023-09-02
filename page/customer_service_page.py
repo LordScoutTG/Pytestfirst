@@ -1,5 +1,7 @@
+import logging
+
 from selenium.webdriver.common.by import By
-from pages.base_page import BasePage
+from page.base_page import BasePage
 
 customer_service_title = (By.CSS_SELECTOR, "[class=\"card-title\"]")
 contact_us_title = (By.CSS_SELECTOR, "[class=\"col-md-8\"] h1")
@@ -18,20 +20,20 @@ class CustomerServicePage(BasePage):
 
     # @Step("Getting Title Customer Service Page")
     def get_customer_service_title(self):
-        # LOG.info("Getting Title Customer Service Page");
+        logging.info('Getting Title Customer Service Page')
         return self.find(customer_service_title).text
 
     # @Step("Getting Title Contact Us block")
     def get_contact_us_title(self):
-        # LOG.info("Getting Title Contact Us block");
+        logging.info('Getting Title Contact Us block')
         return self.find(contact_us_title).text
 
     # @Step("Getting Title Reset Password block")
     def get_reset_password_title(self):
-        # LOG.info("Getting Title Reset Password block");
+        logging.info('Getting Title Reset Password block')
         return self.find(reset_password_title).text
 
     # @Step("Searching for fields with label 'required'")
     def search_required_contact_us_fields(self):
-        # LOG.info("Searching for fields with label 'required'");
+        logging.info('Searching for fields with label "required"')
         return self.finds(required_contact_us_fields)

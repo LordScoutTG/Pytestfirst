@@ -1,13 +1,12 @@
 import pytest
-from selenium.webdriver.common.by import By
 
-from pages.customer_service_page import CustomerServicePage
-from pages.edit_account_page import EditAccountPage
-from pages.home_page import HomePage
-from pages.login_page import LoginPage
-from pages.main_menu import MainMenu
-from pages.order_history_page import OrderHistoryPage
-from pages.rubber_duck_page import RubberDucksPage
+
+from page.customer_service_page import CustomerServicePage
+from page.edit_account_page import EditAccountPage
+from page.login_page import LoginPage
+from page.main_menu import MainMenu
+from page.order_history_page import OrderHistoryPage
+from page.rubber_duck_page import RubberDucksPage
 
 correct_login_email = "1123@123.com"
 correct_login_password = "adDA12341"

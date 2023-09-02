@@ -1,15 +1,19 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from pages.acoount_page import AccountPage
-from pages.cart_page import CartPage
-from pages.create_account_page import CreateAccountPage
-from pages.customer_service_page import CustomerServicePage
-from pages.home_page import HomePage
-from pages.login_page import LoginPage
-from pages.main_menu import MainMenu
-from pages.rubber_duck_page import RubberDucksPage
+
+from page.cart_page import CartPage
+from page.create_account_page import CreateAccountPage
+from page.customer_service_page import CustomerServicePage
+from page.home_page import HomePage
+from page.login_page import LoginPage
+from page.main_menu import MainMenu
+from page.rubber_duck_page import RubberDucksPage
+
+from page.acoount_page import AccountPage
 
 not_logged_in_error = "You must be logged in to view the page."
 sign_in_title_text = "Sign In"
@@ -35,7 +39,7 @@ def test_success_warning_message_is_visible(browser):
     login_page.open()
     login_page.accept_cookies_button_click()
     home_page.click_on_account_button()
-    # LOG.info("Checking correct warning unlogined message");
+    logging.info("Checking correct warning unlogined message")
     assert account_page.get_not_logged_in_error() == not_logged_in_error
 
 
@@ -49,7 +53,7 @@ def test_success_un_authorised_sign_in_page_headers_text(browser):
     login_page.open()
     login_page.accept_cookies_button_click()
     home_page.login_link_click()
-    # LOG.info("Checking correct unauthorised sign in page Title text")
+    logging.info("Checking correct unauthorised sign in page Title text")
     assert account_page.get_sign_in_title_text() == sign_in_title_text
     assert account_page.get_create_account_title_text() == create_account_title_text
 
@@ -66,7 +70,7 @@ def test_success_reset_password_page_title_text(browser):
     login_page.accept_cookies_button_click()
     home_page.login_link_click()
     account_page.lost_your_password_link_click()
-    # LOG.info("Checking correct Reset Password page Title text");
+    logging.info("Checking correct Reset Password page Title text")
     assert customer_service_page.get_reset_password_title() == reset_password_text
 
     # @Test(description = "Checking correct required fields at Contact Us form")
@@ -79,7 +83,7 @@ def test_success_required_contact_us_fields(browser):
     login_page.open()
     login_page.accept_cookies_button_click()
     home_page.customer_service_footer_link_click()
-    # LOG.info("Checking correct required fields at Contact Us form")
+    logging.info("Checking correct required fields at Contact Us form")
     for i in range(len(required_contact_us_fields_text)):
         assert customer_service_page.search_required_contact_us_fields()[i].text == required_contact_us_fields_text[i]
 
@@ -93,7 +97,7 @@ def test_success_create_account_page_title_text(browser):
     login_page.open()
     login_page.accept_cookies_button_click()
     home_page.create_account_footer_link_click()
-    # LOG.info("Checking correct Create Account page Title text")
+    logging.info("Checking correct Create Account page Title text")
     assert create_account_page.get_create_account_title() == login_create_account_title_text
 
 
@@ -107,16 +111,16 @@ def test_success_required_create_account_fields(browser):
     login_page.open()
     login_page.accept_cookies_button_click()
     home_page.create_account_footer_link_click()
-    # LOG.info("Checking correct required fields at Create Account form");
+    logging.info("Checking correct required fields at Create Account form")
     for i in range(len(required_create_account_fields_text)):
         assert create_account_page.search_required_create_account_fields()[i].text == required_create_account_fields_text[i]
 
-# @Test(dataProvider = "duckDataProvider", dataProviderClass = DataProviderClass.class)
+#
 #     @Severity(SeverityLevel.NORMAL)
 #     @Story("Ducks shopping tests")
 #     @Flaky
 def test_success_warning_message_no_first_name_shopping_form(browser):
-    # LOG.debug("Checking correct warning message 'No First Name' in Shopping form");
+    logging.debug("Checking correct warning message 'No First Name' in Shopping form")
     login_page = LoginPage(browser)
     main_menu = MainMenu(browser)
     rubber_ducks_page = RubberDucksPage(browser)

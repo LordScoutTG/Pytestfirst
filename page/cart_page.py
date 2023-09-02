@@ -1,9 +1,11 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 
-from pages.base_page import BasePage
+from page.base_page import BasePage
 
 empty_cart_text = "There are no items in your cart."
 remove_from_cart_button = (By.CSS_SELECTOR, "[name=\"remove_cart_item\"]")
@@ -34,19 +36,19 @@ class CartPage(BasePage):
 
     # @Step("Clicking Remove from Cart button")
     def click_remove_from_cart_button(self):
-        # LOG.info("Clicking Remove from Cart button");
+        logging.info('Clicking Remove from Cart button')
         self.find(remove_from_cart_button).click()
 
     # @Step("Checking remove button is Visible")
     def if_remove_button_is_visible(self, browser):
+        logging.debug('Waiting for Cart title appeared')
         WebDriverWait(browser, delay).until(EC.presence_of_element_located(cart_title))
-        # LOG.debug("Waiting for Cart title appeared");
-        # LOG.info("Checking remove button is Visible");
+        logging.info('Checking remove button is Visible')
         self.find(remove_from_cart_button)
 
     # @Step("Cleaning Cart")
     def cleaning_cart(self, browser):
-        # LOG.info("Cleaning Cart");
+        logging.info('Cleaning Cart')
         try:
             CartPage.if_remove_button_is_visible(self, browser)
             CartPage.click_remove_from_cart_button(self)
@@ -54,15 +56,15 @@ class CartPage(BasePage):
             pass
 
         WebDriverWait(browser, delay).until(EC.presence_of_element_located(cart_text))
-        # LOG.debug("Waiting empty cart text appeared");
+        logging.debug('Waiting empty cart text appeared')
         assert self.find(cart_text).text == empty_cart_text
 
     # @Step("Getting unregistered error message text")
     def get_unregistered_error_message_text(self):
-        # LOG.info("Getting unregistered error message text")
+        logging.info('Getting unregistered error message text')
         return self.find(unregistered_error_message).text
 
     # @Step("Saving shopping cart changes")
     def saving_shopping_cart_changes(self):
-        # LOG.info("Saving shopping cart changes");
+        logging.info('Saving shopping cart changes')
         self.find(save_changes_button).click()

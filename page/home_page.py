@@ -1,8 +1,10 @@
+import logging
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
-from pages.base_page import BasePage
+from page.base_page import BasePage
 
 success_message = (By.CLASS_NAME, "alert-success")
 reg_settings_change_link = (By.CSS_SELECTOR,
@@ -33,73 +35,73 @@ class HomePage(BasePage):
 
     # @Step("Verify successful login")
     def success_message_is_visible(self):
-        # LOG.info("Checking success message");
+        logging.info('Checking success message')
         return self.find(success_message).is_displayed()
 
 
     # @Step("Clicking on regional settings")
     def reg_settings_change_link_click(self):
-        # LOG.info("Clicking on regional settings");
+        logging.info('Clicking on regional settings')
         self.find(reg_settings_change_link).click()
 
     # @Step("Clicking on currency selection")
     def currency_selector_click(self):
-        # LOG.info("Clicking on currency selection");
+        logging.info('Clicking on currency selection')
         self.find(currency_selector).click()
 
     # @Step("Saving currency selection")
     def submit_settings_button_click(self):
-        # LOG.info("Saving currency selection");
+        logging.info('Saving currency selection')
         self.find(submit_settings_button).click()
 
     # @Step("Searching for euro elements in goods")
     def search_euro_price_symbols(self):
-        # LOG.info("Searching for euro elements in goods");
+        logging.info('Searching for euro elements in goods')
         return self.finds(euro_price_symbols)
 
     # @Step("Checking if Duck title is visible")
     def duck_title_is_correct(self):
-        # LOG.info("Checking if Duck title is visible");
+        logging.info('Checking if Duck title is visible')
         return self.find(duck_page_title).text
 
     # @Step("Searching for ducks with Sale sticker")
     def search_ducks_with_on_sale_sticker(self):
-        # LOG.info("Searching for ducks with Sale sticker");
+        logging.info('Searching for ducks with Sale sticker')
         return self.finds(duck_with_on_sale_sticker)
 
     # @Step("Searching for ducks with cheaper price")
     def search_ducks_with_cheaper_price(self):
-        # LOG.info("Searching for ducks with cheaper price");
+        logging.info('Searching for ducks with cheaper price')
         return self.finds(duck_with_cheaper_price)
 
     # @Step("Clicking on Most Popular Duck at Main Page")
     def click_on_most_popular_duck(self, duck_name, browser):
-        # LOG.info("Clicking on Most Popular Duck at Main Page");
+        logging.info('Clicking on Most Popular Duck at Main Page')
         WebDriverWait(browser, delay).until(EC.presence_of_element_located(self.get_most_popular_duck_locator(duck_name)))
         self.find(self.get_most_popular_duck_locator(duck_name)).click()
 
     # @Step("Clicking on Cart Button")
     def click_on_cart_button(self):
-        # LOG.info("Clicking on Cart Button");
+        logging.info('Clicking on Cart Button')
         self.find(cart_button).click()
 
     # @Step("Clicking Account Button")
     def click_on_account_button(self):
-        # LOG.info("Clicking Account Button");
+        logging.info('Clicking Account Button')
         self.find(account_button).click()
 
     # @Step("Clicking Login footer link")
     def login_link_click(self):
-        # LOG.info("Clicking Login footer link");
+        logging.info('Clicking Login footer link')
         self.find(login_link).click()
 
     # @Step("Clicking Customer Service footer link")
     def customer_service_footer_link_click(self):
-        # LOG.info("Clicking Customer Service footer link");
+        logging.info('Clicking Customer Service footer link')
         self.find(customer_service_footer_link).click()
 
     # @Step("Clicking Create Account footer link")
     def create_account_footer_link_click(self):
-        # LOG.info("Clicking Create Account footer link");
+        logging.info('Clicking Create Account footer link')
         self.find(create_account_link).click()
 
