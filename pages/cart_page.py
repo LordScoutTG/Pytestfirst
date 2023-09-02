@@ -5,27 +5,27 @@ from selenium.common.exceptions import NoSuchElementException
 
 from pages.base_page import BasePage
 
-emptyCartText = "There are no items in your cart."
-removeFromCartButton = (By.CSS_SELECTOR, "[name=\"remove_cart_item\"]")
-cartTitle = (By.CSS_SELECTOR, "[class=\"cart wrapper\"] [class=\"card-title\"]")
-cartText = (By.CSS_SELECTOR,"[class=\"text-center\"]")
-unregisteredErrorMessage = (By.CSS_SELECTOR,"[class=\"error\"]")
-unregisteredErrorNoFirstNameText = "Customer Details: You must enter a first name."
-unregisteredErrorNoLastNameText = "Customer Details: You must enter a last name."
-unregisteredErrorNoAddressText = "Customer Details: You must enter an address."
-unregisteredErrorNoCityText = "Customer Details: You must enter a city."
-unregisteredErrorNoEmailText = "Customer Details: You must enter an email address."
-unregisteredErrorNoPhoneText = "Customer Details: You must enter a phone number."
-unregisteredErrorNoPostCodeText = "Customer Details: You must enter a postcode."
-firstNameCartInput = (By.NAME,"firstname")
-lastNameCartInput = (By.NAME,"lastname")
-address1CartInput = (By.NAME,"address1")
-cityCartInput = (By.NAME,"city")
-emailCartInput = (By.NAME,"email")
-phoneCartInput = (By.CSS_SELECTOR,"[class=\"input-group\"] [name=\"phone\"]")
-postCodeCartInput = (By.CSS_SELECTOR,"[class=\"form-control\"][name=\"postcode\"]")
-saveChangesButton = (By.CSS_SELECTOR,"[name=\"save_customer_details\"][type='submit']")
-agreementCheckBoxShoppingForm = (By.CSS_SELECTOR,"[class=\"form-check\"][name=\"terms_agreed\"]")
+empty_cart_text = "There are no items in your cart."
+remove_from_cart_button = (By.CSS_SELECTOR, "[name=\"remove_cart_item\"]")
+cart_title = (By.CSS_SELECTOR, "[class=\"cart wrapper\"] [class=\"card-title\"]")
+cart_text = (By.CSS_SELECTOR, "[class=\"text-center\"]")
+unregistered_error_message = (By.CSS_SELECTOR, "[class=\"error\"]")
+unregistered_error_no_first_name_text = "Customer Details: You must enter a first name."
+unregistered_error_no_last_name_text = "Customer Details: You must enter a last name."
+unregistered_error_no_address_text = "Customer Details: You must enter an address."
+unregistered_error_no_city_text = "Customer Details: You must enter a city."
+unregistered_error_no_email_text = "Customer Details: You must enter an email address."
+unregistered_error_no_phone_text = "Customer Details: You must enter a phone number."
+unregistered_error_no_post_code_text = "Customer Details: You must enter a postcode."
+first_name_cart_input = (By.NAME, "firstname")
+last_name_cart_input = (By.NAME, "lastname")
+address1_cart_input = (By.NAME, "address1")
+city_cart_input = (By.NAME, "city")
+email_cart_input = (By.NAME, "email")
+phone_cart_input = (By.CSS_SELECTOR, "[class=\"input-group\"] [name=\"phone\"]")
+post_code_cart_input = (By.CSS_SELECTOR, "[class=\"form-control\"][name=\"postcode\"]")
+save_changes_button = (By.CSS_SELECTOR, "[name=\"save_customer_details\"][type='submit']")
+agreement_check_box_shopping_form = (By.CSS_SELECTOR, "[class=\"form-check\"][name=\"terms_agreed\"]")
 delay = 3 # seconds
 
 class CartPage(BasePage):
@@ -33,36 +33,36 @@ class CartPage(BasePage):
         super().__init__(browser)
 
     # @Step("Clicking Remove from Cart button")
-    def clickRemoveFromCartButton(self):
+    def click_remove_from_cart_button(self):
         # LOG.info("Clicking Remove from Cart button");
-        self.find(removeFromCartButton).click()
+        self.find(remove_from_cart_button).click()
 
     # @Step("Checking remove button is Visible")
-    def ifRemoveButtonIsVisible(self, browser):
-        WebDriverWait(browser, delay).until(EC.presence_of_element_located(cartTitle))
+    def if_remove_button_is_visible(self, browser):
+        WebDriverWait(browser, delay).until(EC.presence_of_element_located(cart_title))
         # LOG.debug("Waiting for Cart title appeared");
         # LOG.info("Checking remove button is Visible");
-        self.find(removeFromCartButton)
+        self.find(remove_from_cart_button)
 
     # @Step("Cleaning Cart")
-    def cleaningCart(self, browser):
+    def cleaning_cart(self, browser):
         # LOG.info("Cleaning Cart");
         try:
-            CartPage.ifRemoveButtonIsVisible(self, browser)
-            CartPage.clickRemoveFromCartButton(self)
+            CartPage.if_remove_button_is_visible(self, browser)
+            CartPage.click_remove_from_cart_button(self)
         except NoSuchElementException:
             pass
 
-        WebDriverWait(browser, delay).until(EC.presence_of_element_located(cartText))
+        WebDriverWait(browser, delay).until(EC.presence_of_element_located(cart_text))
         # LOG.debug("Waiting empty cart text appeared");
-        assert self.find(cartText).text == emptyCartText
+        assert self.find(cart_text).text == empty_cart_text
 
     # @Step("Getting unregistered error message text")
-    def getUnregisteredErrorMessageText(self):
+    def get_unregistered_error_message_text(self):
         # LOG.info("Getting unregistered error message text")
-        return self.find(unregisteredErrorMessage).text
+        return self.find(unregistered_error_message).text
 
     # @Step("Saving shopping cart changes")
-    def savingShoppingCartChanges(self):
+    def saving_shopping_cart_changes(self):
         # LOG.info("Saving shopping cart changes");
-        self.find(saveChangesButton).click()
+        self.find(save_changes_button).click()

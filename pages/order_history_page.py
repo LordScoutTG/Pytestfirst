@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
-orderHistoryTitle = (By.CSS_SELECTOR, "h1[class=\"card-title\"]")
-orderHistoryTitleText = "Order History"
+order_history_title = (By.CSS_SELECTOR, "h1[class=\"card-title\"]")
+order_history_title_text = "Order History"
 
 
 class OrderHistoryPage(BasePage):
@@ -10,8 +10,8 @@ class OrderHistoryPage(BasePage):
         super().__init__(browser)
 
     # @Step("Getting Title Order History Page")
-    def getOrderHistoryPageTitle(self):
+    def get_order_history_page_title(self):
         # LOG.info("Getting Title Order History Page");
-        return self.find(orderHistoryTitle).text
+        return self.find(order_history_title).text
 
     

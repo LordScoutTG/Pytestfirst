@@ -3,12 +3,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from pages.base_page import BasePage
 from selenium.webdriver.support import expected_conditions as EC
 
-categoriesMenuButton = (By.CSS_SELECTOR, "[class=\"nav-item categories dropdown\"]")
-categoriesRubberDuckLink = (By.CSS_SELECTOR, "[class=\"nav-item\"] > [href=\"https://litecart.info/rubber-ducks-c-1/\"]")
-verticalCustomerServiceLink = (By.CSS_SELECTOR, "[class=\"nav-item customer-service\"] > [href=\"https://litecart.info/customer-service\"]")
-verticalOrderHistoryLink = (By.CSS_SELECTOR, "[class=\"dropdown-menu dropdown-menu-end\"] [href=\"https://litecart.info/order_history\"]")
-verticalEditAccountLink = (By.CSS_SELECTOR, "[class=\"dropdown-menu dropdown-menu-end\"] [href=\"https://litecart.info/edit_account\"]")
-verticalLogoutLink = (By.CSS_SELECTOR, "[class=\"dropdown-menu dropdown-menu-end\"] [href=\"https://litecart.info/logout\"]")
+categories_menu_button = (By.CSS_SELECTOR, "[class=\"nav-item categories dropdown\"]")
+categories_rubber_duck_link = (By.CSS_SELECTOR, "[class=\"nav-item\"] > [href=\"https://litecart.info/rubber-ducks-c-1/\"]")
+vertical_customer_service_link = (By.CSS_SELECTOR, "[class=\"nav-item customer-service\"] > [href=\"https://litecart.info/customer-service\"]")
+vertical_order_history_link = (By.CSS_SELECTOR, "[class=\"dropdown-menu dropdown-menu-end\"] [href=\"https://litecart.info/order_history\"]")
+vertical_edit_account_link = (By.CSS_SELECTOR, "[class=\"dropdown-menu dropdown-menu-end\"] [href=\"https://litecart.info/edit_account\"]")
+vertical_logout_link = (By.CSS_SELECTOR, "[class=\"dropdown-menu dropdown-menu-end\"] [href=\"https://litecart.info/logout\"]")
 delay = 3
 
 
@@ -17,34 +17,34 @@ class MainMenu(BasePage):
         super().__init__(browser)
 
     # @Step("Clicking on Rubber Ducks link at Main Menu")
-    def clickMainMenuRDLink(self, browser):
+    def click_main_menu_rd_link(self, browser):
         # LOG.info("Clicking on Rubber Ducks link at Main Menu");
         # LOG.debug("Waiting for Categories link appeared");
         WebDriverWait(browser, delay).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "[class=\"nav-item categories dropdown\"]")))
-        self.find(categoriesMenuButton).click()
+        self.find(categories_menu_button).click()
         # LOG.debug("Waiting for RD link appeared");
         WebDriverWait(browser, delay).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "[class=\"nav-item\"] > [href=\"https://litecart.info/rubber-ducks-c-1/\"]")))
-        self.find(categoriesRubberDuckLink).click()
+        self.find(categories_rubber_duck_link).click()
 
     # @Step("Clicking on Customer Service at Main Menu")
-    def verticalCustomerServiceLinkClick(self):
+    def vertical_customer_service_link_click(self):
         # LOG.info("Clicking on Customer Service at Main Menu");
-        self.find(verticalCustomerServiceLink).click()
+        self.find(vertical_customer_service_link).click()
 
     # @Step("Clicking on Order History at Main Menu")
-    def verticalOrderHistoryLinkClick(self):
+    def vertical_order_history_link_click(self):
         # LOG.info("Clicking on Customer Service at Main Menu");
-        self.find(verticalOrderHistoryLink).click()
+        self.find(vertical_order_history_link).click()
 
     # @Step("Clicking on Edit Account at Main Menu")
-    def verticalEditAccountLinkClick(self):
+    def vertical_edit_account_link_click(self):
         # LOG.info("Clicking on Customer Service at Main Menu");
-        self.find(verticalEditAccountLink).click()
+        self.find(vertical_edit_account_link).click()
 
     # @Step("Clicking on Logout at Main Menu")
-    def verticalLogoutLinkClick(self):
+    def vertical_logout_link_click(self):
         # LOG.info("Clicking on Customer Service at Main Menu");
-        self.find(verticalLogoutLink).click()
+        self.find(vertical_logout_link).click()
 

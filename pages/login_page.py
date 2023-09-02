@@ -4,14 +4,14 @@ from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
-signInButtom = (By.CSS_SELECTOR, "[class=\"nav-item account dropdown\"]>[data-toggle=\"dropdown\"]")
-emailInputBox = (By.CSS_SELECTOR, "[name=\"login_form\"] [name=\"email\"]")
-unSuccessMessage = (By.CLASS_NAME, "alert-danger")
-acceptCookies = (By.CSS_SELECTOR, "[name=\"accept_cookies\"]")
-logoutMessage = "You are now logged out."
-passwordInputBox = (By.CSS_SELECTOR, "[name=\"login_form\"] [name=\"password\"]")
-loginButton = (By.NAME, "login")
-successMessage = (By.CLASS_NAME, "alert-success")
+sign_in_buttom = (By.CSS_SELECTOR, "[class=\"nav-item account dropdown\"]>[data-toggle=\"dropdown\"]")
+email_input_box = (By.CSS_SELECTOR, "[name=\"login_form\"] [name=\"email\"]")
+un_success_message = (By.CLASS_NAME, "alert-danger")
+accept_cookies = (By.CSS_SELECTOR, "[name=\"accept_cookies\"]")
+logout_message = "You are now logged out."
+password_input_box = (By.CSS_SELECTOR, "[name=\"login_form\"] [name=\"password\"]")
+login_button = (By.NAME, "login")
+success_message = (By.CLASS_NAME, "alert-success")
 delay = 3
 
 
@@ -23,48 +23,48 @@ class LoginPage(BasePage):
         self.browser.get('https://litecart.info/')
 
     def sign_in_button(self):
-        return self.find(signInButtom)
+        return self.find(sign_in_buttom)
 
     @property
     def email_input(self):
-        return self.find(emailInputBox)
+        return self.find(email_input_box)
 
-    def setEmailInput(self, email, browser):
-        self.acceptCookiesButtonClick()
+    def set_email_input(self, email, browser):
+        self.accept_cookies_button_click()
         self.sign_in_button().click()
         WebDriverWait(browser, delay).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "[name=\"login_form\"] [name=\"email\"]")))
         # LOG.debug("Writing login email")
-        self.find(emailInputBox).send_keys(email)
+        self.find(email_input_box).send_keys(email)
 
-    def setPasswordInput(self, password):
+    def set_password_input(self, password):
         # LOG.debug("Writing login password");
-        self.find(passwordInputBox).send_keys(password)
+        self.find(password_input_box).send_keys(password)
 
-    def clickLoginButton(self):
+    def click_login_button(self):
         # LOG.debug("Clicking login button");
-        self.find(loginButton).click()
+        self.find(login_button).click()
 
     # @Step("Login step with email: {1}, password: {2}, for method: {method}")
-    def attemptLogin(self, email, password, browser):
+    def attempt_login(self, email, password, browser):
         # LOG.info("Attempting login");
-        self.setEmailInput(email, browser)
-        self.setPasswordInput(password)
-        self.clickLoginButton()
+        self.set_email_input(email, browser)
+        self.set_password_input(password)
+        self.click_login_button()
 
-    def unSuccessMessageIsVisible(self):
+    def un_success_message_is_visible(self):
         # LOG.info("Checking unsuccessful message");
-        return self.find(unSuccessMessage).is_displayed()
+        return self.find(un_success_message).is_displayed()
 
 
     def logout_message_text(self):
-        return self.find(successMessage).text
+        return self.find(success_message).text
 
     # @Step("Clicking on Sign In menu")
-    def signInMenuClick(self):
+    def sign_in_menu_click(self):
         # LOG.info("Clicking on Sign In menu");
-        self.find(signInButtom).click()
+        self.find(sign_in_buttom).click()
 
     # @Step("Accepting Cookies")
-    def acceptCookiesButtonClick(self):
+    def accept_cookies_button_click(self):
         # LOG.info("Accepting Cookies");
-        self.find(acceptCookies).click()
+        self.find(accept_cookies).click()

@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
-editAccountTitle = (By.CSS_SELECTOR, "h2[class=\"card-title\"]")
-editAccountTitleText = "Account"
+edit_account_title = (By.CSS_SELECTOR, "h2[class=\"card-title\"]")
+edit_account_title_text = "Account"
 
 
 class EditAccountPage(BasePage):
@@ -10,6 +10,6 @@ class EditAccountPage(BasePage):
         super().__init__(browser)
 
     # @Step("Getting Title Edit Account Page")
-    def getEditAccountTitle(self):
+    def get_edit_account_title(self):
         # LOG.info("Getting Title Edit Account Page");
-        return self.find(editAccountTitle).text
+        return self.find(edit_account_title).text
