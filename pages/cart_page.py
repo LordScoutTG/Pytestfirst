@@ -60,7 +60,7 @@ class CartPage(BasePage):
     # @Step("Getting unregistered error message text")
     def getUnregisteredErrorMessageText(self):
         # LOG.info("Getting unregistered error message text")
-        return self.find(unregisteredErrorMessage).getText()
+        return self.find(unregisteredErrorMessage).text
 
     # @Step("Saving shopping cart changes")
     def savingShoppingCartChanges(self):

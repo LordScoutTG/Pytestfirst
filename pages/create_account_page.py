@@ -14,7 +14,7 @@ class CreateAccountPage(BasePage):
     # @Step("Getting Title Create Account Page")
     def getCreateAccountTitle(self):
         # LOG.info("Getting Title Create Account Page");
-        return self.find(createAccountTitle).getText()
+        return self.find(createAccountTitle).text
 
     # @Step("Searching for fields with label 'required'")
     def searchRequiredCreateAccountFields(self):

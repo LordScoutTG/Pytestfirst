@@ -11,6 +11,7 @@ acceptCookies = (By.CSS_SELECTOR, "[name=\"accept_cookies\"]")
 logoutMessage = "You are now logged out."
 passwordInputBox = (By.CSS_SELECTOR, "[name=\"login_form\"] [name=\"password\"]")
 loginButton = (By.NAME, "login")
+successMessage = (By.CLASS_NAME, "alert-success")
 delay = 3
 
 
@@ -53,6 +54,10 @@ class LoginPage(BasePage):
     def unSuccessMessageIsVisible(self):
         # LOG.info("Checking unsuccessful message");
         return self.find(unSuccessMessage).is_displayed()
+
+
+    def logout_message_text(self):
+        return self.find(successMessage).text
 
     # @Step("Clicking on Sign In menu")
     def signInMenuClick(self):

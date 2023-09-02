@@ -36,6 +36,7 @@ class HomePage(BasePage):
         # LOG.info("Checking success message");
         return self.find(successMessage).is_displayed()
 
+
     # @Step("Clicking on regional settings")
     def regSettingsChangeLinkClick(self):
         # LOG.info("Clicking on regional settings");
@@ -59,7 +60,7 @@ class HomePage(BasePage):
     # @Step("Checking if Duck title is visible")
     def duckTitleIsCorrect(self):
         # LOG.info("Checking if Duck title is visible");
-        return self.find(duckPageTitle).getText()
+        return self.find(duckPageTitle).text
 
     # @Step("Searching for ducks with Sale sticker")
     def searchDucksWithOnSaleSticker(self):
@@ -74,8 +75,8 @@ class HomePage(BasePage):
     # @Step("Clicking on Most Popular Duck at Main Page")
     def clickOnMostPopularDuck(self, duckName, browser):
         # LOG.info("Clicking on Most Popular Duck at Main Page");
-        WebDriverWait(browser, delay).until(EC.presence_of_element_located(HomePage.getMostPopularDuckLocator(duckName)))
-        self.find(HomePage.getMostPopularDuckLocator(duckName)).click()
+        WebDriverWait(browser, delay).until(EC.presence_of_element_located(self.getMostPopularDuckLocator(duckName)))
+        self.find(self.getMostPopularDuckLocator(duckName)).click()
 
     # @Step("Clicking on Cart Button")
     def clickOnCartButton(self):

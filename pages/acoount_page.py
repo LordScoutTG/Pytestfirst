@@ -18,17 +18,17 @@ class AccountPage(BasePage):
     # @Step("Getting text from warning message")
     def getNotLoggedInError(self):
         # LOG.info("Getting text from warning message")
-        return self.find(alertMessage).getText()
+        return self.find(alertMessage).text
 
     # @Step("Getting text from Sign In title")
     def getSignInTitleText(self):
         # LOG.info("Getting text from Sign In title");
-        return self.find(signInTitle).getText()
+        return self.find(signInTitle).text
 
     # @Step("Getting text from Create Account title")
     def getCreateAccountTitleText(self):
         # LOG.info("Getting text from Create Account title");
-        return self.find(createAccountTitle).getText()
+        return self.find(createAccountTitle).text
 
     # @Step("Clicking 'lost your password?' link")
     def lostYourPasswordLinkClick(self):

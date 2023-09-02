@@ -12,4 +12,4 @@ class EditAccountPage(BasePage):
     # @Step("Getting Title Edit Account Page")
     def getEditAccountTitle(self):
         # LOG.info("Getting Title Edit Account Page");
-        return self.find(editAccountTitle).getText()
+        return self.find(editAccountTitle).text

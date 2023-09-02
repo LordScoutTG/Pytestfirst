@@ -12,5 +12,6 @@ class OrderHistoryPage(BasePage):
     # @Step("Getting Title Order History Page")
     def getOrderHistoryPageTitle(self):
         # LOG.info("Getting Title Order History Page");
-        self.find(orderHistoryTitle).getText()
+        return self.find(orderHistoryTitle).text
+
     

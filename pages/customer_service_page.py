@@ -19,17 +19,17 @@ class CustomerServicePage(BasePage):
     # @Step("Getting Title Customer Service Page")
     def getCustomerServiceTitle(self):
         # LOG.info("Getting Title Customer Service Page");
-        return self.find(customerServiceTitle).getText()
+        return self.find(customerServiceTitle).text
 
     # @Step("Getting Title Contact Us block")
     def getContactUsTitle(self):
         # LOG.info("Getting Title Contact Us block");
-        return self.find(contactUsTitle).getText()
+        return self.find(contactUsTitle).text
 
     # @Step("Getting Title Reset Password block")
     def getResetPasswordTitle(self):
         # LOG.info("Getting Title Reset Password block");
-        return self.find(resetPasswordTitle).getText()
+        return self.find(resetPasswordTitle).text
 
     # @Step("Searching for fields with label 'required'")
     def searchRequiredContactUsFields(self):

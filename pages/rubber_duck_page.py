@@ -26,7 +26,7 @@ class RubberDucksPage(BasePage):
     # @Step("Checking Rubber Ducks title")
     def rubberDuckTitleIsVisible(self):
         # LOG.info("Checking Rubber Ducks title");
-        return self.find(rubberDuckTitle).isDisplayed()
+        return self.find(rubberDuckTitle).is_displayed()
 
     # @Step("Clicking on Duck at Duck Page")
     def clickOnDuck(self, duckName, browser):
@@ -51,13 +51,13 @@ class RubberDucksPage(BasePage):
     # @Step("Set Quantity sending keys")
     def setQuantityByKeys(self):
         # LOG.info("Set Quantity sending keys");
-        self.find(duckQuantityInput).clear();
-        self.find(duckQuantityInput).sendKeys(str(quantityOrder))
+        self.find(duckQuantityInput).clear()
+        self.find(duckQuantityInput).send_keys(str(quantityOrder))
 
     # @Step("Get Quantity value from Cart box")
     def getQuantityFromCart(self):
         # LOG.info("Get Quantity value from Cart box");
-        return self.find(cartQuantity).getText()
+        return self.find(cartQuantity).text
 
     # @Step("Size Options Menu click")
     def sizeOptionsMenuClick(self):
@@ -114,10 +114,10 @@ class RubberDucksPage(BasePage):
     # @Step("Checking correct submit button text")
     def getAddToCartButtonText(self):
         # LOG.info("Checking correct submit button text");
-       return self.find(duckQuantitySubmitButton).getText()
+       return self.find(duckQuantitySubmitButton).text
 
     # @Step("Getting Duck color from details")
     def getDuckColorTextFromDetails(self):
         # LOG.info("Getting Duck color from details");
-        return self.find(detailsDuckBodyColor).getText()
+        return self.find(detailsDuckBodyColor).text
 
