@@ -1,5 +1,6 @@
 import logging
 
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -27,11 +28,10 @@ def test_login_field_exist(browser):
     WebDriverWait(browser, delay).until(EC.element_to_be_clickable(email_input_box))
     assert login_page.email_input.is_displayed()
 
-    # @Test(description="Login with correct creds")
-    # @Severity(SeverityLevel.BLOCKER)
-    # @Story("Login tests")
 
-
+@allure.story("Login tests")
+@allure.severity(allure.severity_level.BLOCKER)
+@allure.description("Login with correct creds")
 def test_success_login_test(browser):
     login_page = LoginPage(browser)
     home_page = HomePage(browser)
@@ -40,7 +40,8 @@ def test_success_login_test(browser):
     login_page.attempt_login(correct_login_email, correct_login_password, browser)
     assert (home_page.success_message_is_visible(), "Login was not successful")
 
-
+@allure.story("Login tests")
+@allure.description("Login with incorrect creds")
 def test_unsuccessful_login(browser):
     login_page = LoginPage(browser)
     login_page.open()

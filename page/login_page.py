@@ -1,5 +1,6 @@
 import logging
 
+import allure
 from selenium.webdriver.support.wait import WebDriverWait
 
 from page.base_page import BasePage
@@ -46,7 +47,7 @@ class LoginPage(BasePage):
         logging.debug('Clicking login button')
         self.find(login_button).click()
 
-    # @Step("Login step with email: {1}, password: {2}, for method: {method}")
+    @allure.step("Login step with email: {1}, password: {2}, for method: {method}")
     def attempt_login(self, email, password, browser):
         logging.info('Attempting login')
         self.set_email_input(email, browser)
@@ -61,12 +62,12 @@ class LoginPage(BasePage):
     def logout_message_text(self):
         return self.find(success_message).text
 
-    # @Step("Clicking on Sign In menu")
+    @allure.step("Clicking on Sign In menu")
     def sign_in_menu_click(self):
         logging.info('Clicking on Sign In menu')
         self.find(sign_in_buttom).click()
 
-    # @Step("Accepting Cookies")
+    @allure.step("Accepting Cookies")
     def accept_cookies_button_click(self):
         logging.info('Accepting Cookies')
         self.find(accept_cookies).click()
