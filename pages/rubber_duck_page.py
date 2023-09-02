@@ -12,8 +12,7 @@ duckQuantitySubmitButton = (By.CSS_SELECTOR, "[name=\"add_cart_product\"]")
 cartQuantity = (By.CSS_SELECTOR, "[class=\"badge quantity\"]")
 availableStockStatus = (By.CSS_SELECTOR, "[class='stock-available']")
 sizeOptionsMenu = (By.CSS_SELECTOR, "[name='options[Size]']")
-detailsDuckBodyColor = (
-By.XPATH, "//table[@class=\"table table-striped table-hover\"]//td[text()[contains(.,'Body')]]/following-sibling::td");
+detailsDuckBodyColor = (By.XPATH, "//table[@class=\"table table-striped table-hover\"]//td[text()[contains(.,'Body')]]/following-sibling::td")
 
 
 class RubberDucksPage(BasePage):
@@ -21,7 +20,7 @@ class RubberDucksPage(BasePage):
         super().__init__(browser)
 
     def getDuckLocator(self, duckName):
-        return By.CSS_SELECTOR, "[alt='%s']".format(duckName)
+        return (By.CSS_SELECTOR, "[alt='{}']".format(duckName))
 
     # @Step("Checking Rubber Ducks title")
     def rubberDuckTitleIsVisible(self):
@@ -29,9 +28,9 @@ class RubberDucksPage(BasePage):
         return self.find(rubberDuckTitle).is_displayed()
 
     # @Step("Clicking on Duck at Duck Page")
-    def clickOnDuck(self, duckName, browser):
+    def clickOnDuck(self, duckName):
         # LOG.info("Clicking on Duck at Duck Page");
-        self.find(RubberDucksPage.getDuckLocator(duckName, browser)).click()
+        self.find(self.getDuckLocator(duckName)).click()
 
     # @Step("Clicking on Duck Quantity Input")
     def clickOnQuantityInput(self):
@@ -67,19 +66,19 @@ class RubberDucksPage(BasePage):
     # @Step("Choosing small size")
     def choosingSmallSizeDuck(self, browser):
         # LOG.info("Choosing small size");
-        RubberDucksPage.sizeOptionsMenuClick(browser)
+        self.sizeOptionsMenuClick()
         ActionChains(browser).send_keys(Keys.ARROW_DOWN).send_keys(Keys.ENTER)
 
     # @Step("Choosing medium size")
     def choosingMediumSizeDuck(self, browser):
         # LOG.info("Choosing medium size");
-        RubberDucksPage.sizeOptionsMenuClick(browser)
+        self.sizeOptionsMenuClick()
         ActionChains(browser).send_keys(Keys.ARROW_DOWN).send_keys(Keys.ARROW_DOWN).send_keys(Keys.ENTER).perform()
 
     # @Step("Choosing large size")
     def choosingLargeSizeDuck(self, browser):
         # LOG.info("Choosing large size");
-        RubberDucksPage.sizeOptionsMenuClick(browser)
+        self.sizeOptionsMenuClick()
         ActionChains(browser).send_keys(Keys.ARROW_DOWN).send_keys(Keys.ARROW_DOWN).send_keys(Keys.ARROW_DOWN).send_keys(Keys.ENTER).perform()
 
     # @Step("Checking if Stock Status Available and choose Small Duck")
@@ -87,8 +86,8 @@ class RubberDucksPage(BasePage):
         # LOG.info("Checking if Stock Status Available and choose Small Duck");
         try:
             self.find(availableStockStatus)
-            RubberDucksPage.sizeOptionsMenuClick(browser)
-            RubberDucksPage.choosingSmallSizeDuck(browser)
+            self.sizeOptionsMenuClick()
+            self.choosingSmallSizeDuck(browser)
         except NoSuchElementException:
             pass
 
@@ -97,7 +96,7 @@ class RubberDucksPage(BasePage):
         # LOG.info("Checking if Stock Status Available and choose Medium Duck");
         try:
             self.find(availableStockStatus)
-            RubberDucksPage.choosingMediumSizeDuck(browser)
+            self.choosingMediumSizeDuck(browser)
         except NoSuchElementException:
             pass
 
@@ -106,15 +105,15 @@ class RubberDucksPage(BasePage):
         # LOG.info("Checking if Stock Status Available and choose Large Duck");
         try:
             self.find(availableStockStatus)
-            RubberDucksPage.sizeOptionsMenuClick(browser)
-            RubberDucksPage.choosingLargeSizeDuck(browser)
+            self.sizeOptionsMenuClick()
+            self.choosingLargeSizeDuck(browser)
         except NoSuchElementException:
             pass
 
     # @Step("Checking correct submit button text")
     def getAddToCartButtonText(self):
         # LOG.info("Checking correct submit button text");
-       return self.find(duckQuantitySubmitButton).text
+        return self.find(duckQuantitySubmitButton).text
 
     # @Step("Getting Duck color from details")
     def getDuckColorTextFromDetails(self):
