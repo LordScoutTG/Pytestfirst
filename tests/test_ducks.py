@@ -3,10 +3,8 @@ import logging
 import allure
 import pytest
 from selenium.webdriver import ActionChains, Keys
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.select import Select
 
 from page.cart_page import CartPage
 from page.home_page import HomePage

@@ -7,6 +7,7 @@ import pytest
 logging.basicConfig(level=logging.INFO,
                     format='(%(threadName)-0s) %(message)s', )
 
+
 @pytest.fixture
 def driver():
     options = Options()

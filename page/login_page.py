@@ -24,7 +24,6 @@ class LoginPage(BasePage):
     password_input_box = (By.CSS_SELECTOR, "[name=\"login_form\"] [name=\"password\"]")
     login_button = (By.NAME, "login")
 
-
     def open(self):
         self.driver.get('https://litecart.info/')
 
@@ -60,7 +59,6 @@ class LoginPage(BasePage):
     def un_success_message_is_visible(self):
         logging.info('Checking unsuccessful message')
         return self.find(LoginPage.un_success_message).is_displayed()
-
 
     def logout_message_text(self):
         return self.find(HomePage.success_message).text

@@ -1,7 +1,6 @@
 import logging
 import allure
 
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -13,7 +12,6 @@ from page.login_page import LoginPage
 from page.main_menu import MainMenu
 from page.rubber_duck_page import RubberDucksPage
 from page.acoount_page import AccountPage
-
 
 delay = 3
 
@@ -70,7 +68,8 @@ class TestUnauthorised:
         home_page.customer_service_footer_link_click()
         logging.info("Checking correct required fields at Contact Us form")
         for i in range(len(customer_service_page.required_contact_us_fields_text)):
-            assert customer_service_page.search_required_contact_us_fields()[i].text == customer_service_page.required_contact_us_fields_text[i]
+            assert customer_service_page.search_required_contact_us_fields()[i].text == \
+                   customer_service_page.required_contact_us_fields_text[i]
 
     @allure.story("UnAuthorised tests")
     @allure.severity(allure.severity_level.MINOR)
@@ -122,6 +121,7 @@ class TestUnauthorised:
         home_page.click_on_cart_button()
         WebDriverWait(driver, delay).until(EC.presence_of_element_located(cart_page.unregistered_error_message))
         WebDriverWait(driver, delay).until(
-            EC.text_to_be_present_in_element(cart_page.unregistered_error_message, cart_page.unregistered_error_no_first_name_text))
+            EC.text_to_be_present_in_element(cart_page.unregistered_error_message,
+                                             cart_page.unregistered_error_no_first_name_text))
         assert cart_page.get_unregistered_error_message_text() == cart_page.unregistered_error_no_first_name_text
         cart_page.cleaning_cart(driver)

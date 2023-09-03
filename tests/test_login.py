@@ -1,7 +1,6 @@
 import logging
 
 import allure
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -13,7 +12,6 @@ delay = 3
 
 
 class TestLogin:
-
     correct_login_email = "1123@123.com"
     correct_login_password = "adDA12341"
 

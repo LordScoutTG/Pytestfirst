@@ -50,7 +50,8 @@ class RubberDucksPage(BasePage):
     @allure.step("Setting Quantity Input")
     def get_quantity_from_input(self, driver):
         logging.info("Setting Quantity Input")
-        return int(str(driver.execute_script("return arguments[0].value", self.find(RubberDucksPage.duck_quantity_input))))
+        return int(
+            str(driver.execute_script("return arguments[0].value", self.find(RubberDucksPage.duck_quantity_input))))
 
     @allure.step("Set Quantity sending keys")
     def set_quantity_by_keys(self):

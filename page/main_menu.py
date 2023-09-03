@@ -6,7 +6,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from page.base_page import BasePage
 from selenium.webdriver.support import expected_conditions as EC
 
-
 delay = 3
 
 

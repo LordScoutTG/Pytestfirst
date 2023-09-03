@@ -8,7 +8,6 @@ from selenium.common.exceptions import NoSuchElementException
 
 from page.base_page import BasePage
 
-
 delay = 3  # seconds
 
 
@@ -36,6 +35,7 @@ class CartPage(BasePage):
     # phone_cart_input = (By.CSS_SELECTOR, "[class=\"input-group\"] [name=\"phone\"]")
     # post_code_cart_input = (By.CSS_SELECTOR, "[class=\"form-control\"][name=\"postcode\"]")
     save_changes_button = (By.CSS_SELECTOR, "[name=\"save_customer_details\"][type='submit']")
+
     # agreement_check_box_shopping_form = (By.CSS_SELECTOR, "[class=\"form-check\"][name=\"terms_agreed\"]")
 
     @allure.step("Clicking Remove from Cart button")
