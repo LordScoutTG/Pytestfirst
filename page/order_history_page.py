@@ -4,15 +4,15 @@ import allure
 from selenium.webdriver.common.by import By
 from page.base_page import BasePage
 
-order_history_title = (By.CSS_SELECTOR, "h1[class=\"card-title\"]")
-order_history_title_text = "Order History"
-
 
 class OrderHistoryPage(BasePage):
-    def __init__(self, browser):
-        super().__init__(browser)
+    def __init__(self, driver):
+        super().__init__(driver)
+
+    order_history_title = (By.CSS_SELECTOR, "h1[class=\"card-title\"]")
+    order_history_title_text = "Order History"
 
     @allure.step("Getting Title Order History Page")
     def get_order_history_page_title(self):
         logging.info("Getting Title Order History Page")
-        return self.find(order_history_title).text
+        return self.find(OrderHistoryPage.order_history_title).text

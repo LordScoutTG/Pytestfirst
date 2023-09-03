@@ -4,11 +4,11 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pytest
 
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.INFO,
                     format='(%(threadName)-0s) %(message)s', )
 
 @pytest.fixture
-def browser():
+def driver():
     options = Options()
     options.add_argument('--headless=new')
     chrome_browser = webdriver.Chrome(options=options)

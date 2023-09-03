@@ -7,30 +7,32 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from page.base_page import BasePage
 
-success_message = (By.CLASS_NAME, "alert-success")
-reg_settings_change_link = (By.CSS_SELECTOR,
-                            "div > [href=\"https://litecart.info/regional_settings?redirect_url=https%3A%2F%2Flitecart.info%2F#box-regional-settings\"]")
-account_button = (By.CSS_SELECTOR, "[class=\"fa fa-user-o\"]")
-currency_selector = (By.CSS_SELECTOR, "[name='currency_code']")
-submit_settings_button = (By.CSS_SELECTOR, "button[name='save']")
-euro_price_symbols = (By.CSS_SELECTOR, "[class$='price']")
-duck_page_title = (By.CSS_SELECTOR, "h1[class='title']")
-duck_with_on_sale_sticker = (By
-                             .XPATH, "//*[@title='On Sale']/parent::div/following::div[1]/h4")
-duck_with_cheaper_price = (By
-                           .XPATH, "//*[@class=\"campaign-price\"]/parent::div/preceding::h4[1]")
-cart_button = (By.CSS_SELECTOR, "[id='cart']")
-login_link = (By.CSS_SELECTOR, "[href=\"https://litecart.info/login\"]")
-create_account_link = (By.CSS_SELECTOR, "[class=\"account\"] [href=\"https://litecart.info/create_account\"]")
-customer_service_footer_link = (
-By.CSS_SELECTOR, "[class=\"list-unstyled\"] [href=\"https://litecart.info/customer-service\"]")
-loading_element = (By.CSS_SELECTOR, "[class='loader-wrapper']")
+
 delay = 3
 
 
 class HomePage(BasePage):
-    def __init__(self, browser):
-        super().__init__(browser)
+    def __init__(self, driver):
+        super().__init__(driver)
+
+    success_message = (By.CLASS_NAME, "alert-success")
+    reg_settings_change_link = (By.CSS_SELECTOR,
+                                "div > [href=\"https://litecart.info/regional_settings?redirect_url=https%3A%2F%2Flitecart.info%2F#box-regional-settings\"]")
+    account_button = (By.CSS_SELECTOR, "[class=\"fa fa-user-o\"]")
+    currency_selector = (By.CSS_SELECTOR, "[name='currency_code']")
+    submit_settings_button = (By.CSS_SELECTOR, "button[name='save']")
+    euro_price_symbols = (By.CSS_SELECTOR, "[class$='price']")
+    duck_page_title = (By.CSS_SELECTOR, "h1[class='title']")
+    duck_with_on_sale_sticker = (By
+                                 .XPATH, "//*[@title='On Sale']/parent::div/following::div[1]/h4")
+    duck_with_cheaper_price = (By
+                               .XPATH, "//*[@class=\"campaign-price\"]/parent::div/preceding::h4[1]")
+    cart_button = (By.CSS_SELECTOR, "[id='cart']")
+    login_link = (By.CSS_SELECTOR, "[href=\"https://litecart.info/login\"]")
+    create_account_link = (By.CSS_SELECTOR, "[class=\"account\"] [href=\"https://litecart.info/create_account\"]")
+    customer_service_footer_link = (
+        By.CSS_SELECTOR, "[class=\"list-unstyled\"] [href=\"https://litecart.info/customer-service\"]")
+    # loading_element = (By.CSS_SELECTOR, "[class='loader-wrapper']")
 
     def get_most_popular_duck_locator(self, duck_name):
         return By.XPATH, "//section[@id=\"box-popular-products\"]//a[@title='{}']".format(duck_name)
@@ -38,71 +40,77 @@ class HomePage(BasePage):
     @allure.step("Verify successful login")
     def success_message_is_visible(self):
         logging.info('Checking success message')
-        return self.find(success_message).is_displayed()
+        return self.find(HomePage.success_message).is_displayed()
 
     @allure.step("Clicking on regional settings")
     def reg_settings_change_link_click(self):
         logging.info('Clicking on regional settings')
-        self.find(reg_settings_change_link).click()
+        self.find(HomePage.reg_settings_change_link).click()
 
     @allure.step("Clicking on currency selection")
     def currency_selector_click(self):
         logging.info('Clicking on currency selection')
-        self.find(currency_selector).click()
+        self.find(HomePage.currency_selector).click()
+
+    @allure.step("Finding currency select menu")
+    @property
+    def currency_selector_find(self):
+        logging.info('Finding currency select menu')
+        return self.find(HomePage.currency_selector)
 
     @allure.step("Saving currency selection")
     def submit_settings_button_click(self):
         logging.info('Saving currency selection')
-        self.find(submit_settings_button).click()
+        self.find(HomePage.submit_settings_button).click()
 
     @allure.step("Searching for euro elements in goods")
     def search_euro_price_symbols(self):
         logging.info('Searching for euro elements in goods')
-        return self.finds(euro_price_symbols)
+        return self.finds(HomePage.euro_price_symbols)
 
     @allure.step("Checking if Duck title is visible")
     def duck_title_is_correct(self):
         logging.info('Checking if Duck title is visible')
-        return self.find(duck_page_title).text
+        return self.find(HomePage.duck_page_title).text
 
     @allure.step("Searching for ducks with Sale sticker")
     def search_ducks_with_on_sale_sticker(self):
         logging.info('Searching for ducks with Sale sticker')
-        return self.finds(duck_with_on_sale_sticker)
+        return self.finds(HomePage.duck_with_on_sale_sticker)
 
     @allure.step("Searching for ducks with cheaper price")
     def search_ducks_with_cheaper_price(self):
         logging.info('Searching for ducks with cheaper price')
-        return self.finds(duck_with_cheaper_price)
+        return self.finds(HomePage.duck_with_cheaper_price)
 
     @allure.step("Clicking on Most Popular Duck at Main Page")
-    def click_on_most_popular_duck(self, duck_name, browser):
+    def click_on_most_popular_duck(self, duck_name, driver):
         logging.info('Clicking on Most Popular Duck at Main Page')
-        WebDriverWait(browser, delay).until(
+        WebDriverWait(driver, delay).until(
             EC.presence_of_element_located(self.get_most_popular_duck_locator(duck_name)))
         self.find(self.get_most_popular_duck_locator(duck_name)).click()
 
     @allure.step("Clicking on Cart Button")
     def click_on_cart_button(self):
         logging.info('Clicking on Cart Button')
-        self.find(cart_button).click()
+        self.find(HomePage.cart_button).click()
 
     @allure.step("Clicking Account Button")
     def click_on_account_button(self):
         logging.info('Clicking Account Button')
-        self.find(account_button).click()
+        self.find(HomePage.account_button).click()
 
     @allure.step("Clicking Login footer link")
     def login_link_click(self):
         logging.info('Clicking Login footer link')
-        self.find(login_link).click()
+        self.find(HomePage.login_link).click()
 
     @allure.step("Clicking Customer Service footer link")
     def customer_service_footer_link_click(self):
         logging.info('Clicking Customer Service footer link')
-        self.find(customer_service_footer_link).click()
+        self.find(HomePage.customer_service_footer_link).click()
 
     @allure.step("Clicking Create Account footer link")
     def create_account_footer_link_click(self):
         logging.info('Clicking Create Account footer link')
-        self.find(create_account_link).click()
+        self.find(HomePage.create_account_link).click()
