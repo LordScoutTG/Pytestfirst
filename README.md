@@ -1,7 +1,7 @@
 
 # litecart.info autotests pytest
 
-Tiny project, that reproducec abilities of pytest in UI testing
+Tiny project, that reproduces abilities of pytest in UI testing
 
 
 ## Deployment
