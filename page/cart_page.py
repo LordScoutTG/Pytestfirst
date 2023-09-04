@@ -54,8 +54,8 @@ class CartPage(BasePage):
     def cleaning_cart(self, driver):
         logging.info('Cleaning Cart')
         try:
-            self.if_remove_button_is_visible(self, driver)
-            self.click_remove_from_cart_button(self)
+            CartPage.if_remove_button_is_visible(self, driver)
+            CartPage.click_remove_from_cart_button(self)
         except NoSuchElementException:
             pass
 

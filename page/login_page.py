@@ -61,7 +61,7 @@ class LoginPage(BasePage):
         return self.find(self.un_success_message).is_displayed()
 
     def logout_message_text(self):
-        return self.find(self.success_message).text
+        return self.find(HomePage.success_message).text
 
     @allure.step("Clicking on Sign In menu")
     def sign_in_menu_click(self):

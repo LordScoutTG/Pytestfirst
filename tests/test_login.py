@@ -14,6 +14,7 @@ delay = 3
 @allure.epic("Regression Tests")
 @allure.feature("Login Tests")
 class TestLogin:
+
     correct_login_email = "1123@123.com"
     correct_login_password = "adDA12341"
 
@@ -26,7 +27,7 @@ class TestLogin:
         login_page = LoginPage(driver)
         login_page.open()
         login_page.sign_in_button_find().click()
-        WebDriverWait(driver, delay).until(EC.element_to_be_clickable(LoginPage.email_input_box))
+        WebDriverWait(driver, delay).until(EC.element_to_be_clickable(login_page.email_input_box))
         assert login_page.email_input.is_displayed()
 
     @allure.story("Login tests")
