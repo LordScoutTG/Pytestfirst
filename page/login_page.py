@@ -28,26 +28,26 @@ class LoginPage(BasePage):
         self.driver.get('https://litecart.info/')
 
     def sign_in_button_find(self):
-        return self.find(LoginPage.sign_in_button)
+        return self.find(self.sign_in_button)
 
     @property
     def email_input(self):
-        return self.find(LoginPage.email_input_box)
+        return self.find(self.email_input_box)
 
     def set_email_input(self, email, driver):
         self.accept_cookies_button_click()
         self.sign_in_button_find().click()
-        WebDriverWait(driver, delay).until(EC.element_to_be_clickable(LoginPage.email_input_box))
+        WebDriverWait(driver, delay).until(EC.element_to_be_clickable(self.email_input_box))
         logging.debug('Writing login email')
-        self.find(LoginPage.email_input_box).send_keys(email)
+        self.find(self.email_input_box).send_keys(email)
 
     def set_password_input(self, password):
         logging.debug('Writing login password')
-        self.find(LoginPage.password_input_box).send_keys(password)
+        self.find(self.password_input_box).send_keys(password)
 
     def click_login_button(self):
         logging.debug('Clicking login button')
-        self.find(LoginPage.login_button).click()
+        self.find(self.login_button).click()
 
     @allure.step("Login step with email, password:")
     def attempt_login(self, email, password, driver):
@@ -58,17 +58,17 @@ class LoginPage(BasePage):
 
     def un_success_message_is_visible(self):
         logging.info('Checking unsuccessful message')
-        return self.find(LoginPage.un_success_message).is_displayed()
+        return self.find(self.un_success_message).is_displayed()
 
     def logout_message_text(self):
-        return self.find(HomePage.success_message).text
+        return self.find(self.success_message).text
 
     @allure.step("Clicking on Sign In menu")
     def sign_in_menu_click(self):
         logging.info('Clicking on Sign In menu')
-        self.find(LoginPage.sign_in_button).click()
+        self.find(self.sign_in_button).click()
 
     @allure.step("Accepting Cookies")
     def accept_cookies_button_click(self):
         logging.info('Accepting Cookies')
-        self.find(LoginPage.accept_cookies).click()
+        self.find(self.accept_cookies).click()

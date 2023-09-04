@@ -29,31 +29,31 @@ class MainMenu(BasePage):
     def click_main_menu_rd_link(self, driver):
         logging.debug('Waiting for Categories link appeared')
         WebDriverWait(driver, delay).until(
-            EC.element_to_be_clickable(MainMenu.categories_menu_button))
+            EC.element_to_be_clickable(self.categories_menu_button))
         logging.info('Clicking on Categories link at Main Menu')
-        self.find(MainMenu.categories_menu_button).click()
+        self.find(self.categories_menu_button).click()
         logging.debug('Waiting for RD link appeared')
         WebDriverWait(driver, delay).until(
-            EC.element_to_be_clickable(MainMenu.categories_rubber_duck_link))
+            EC.element_to_be_clickable(self.categories_rubber_duck_link))
         logging.info('Clicking on Rubber Ducks link at Main Menu')
-        self.find(MainMenu.categories_rubber_duck_link).click()
+        self.find(self.categories_rubber_duck_link).click()
 
     @allure.step("Clicking on Customer Service at Main Menu")
     def vertical_customer_service_link_click(self):
         logging.info('Clicking on Customer Service at Main Menu')
-        self.find(MainMenu.main_menu_customer_service_link).click()
+        self.find(self.main_menu_customer_service_link).click()
 
     @allure.step("Clicking on Order History at Main Menu")
     def vertical_order_history_link_click(self):
         logging.info('Clicking on Customer Service at Main Menu')
-        self.find(MainMenu.main_menu_order_history_link).click()
+        self.find(self.main_menu_order_history_link).click()
 
     @allure.step("Clicking on Edit Account at Main Menu")
     def vertical_edit_account_link_click(self):
         logging.info('Clicking on Customer Service at Main Menu')
-        self.find(MainMenu.main_menu_edit_account_link).click()
+        self.find(self.main_menu_edit_account_link).click()
 
     @allure.step("Clicking on Logout at Main Menu")
     def vertical_logout_link_click(self):
         logging.info('Clicking on Customer Service at Main Menu')
-        self.find(MainMenu.main_menu_logout_link).click()
+        self.find(self.main_menu_logout_link).click()

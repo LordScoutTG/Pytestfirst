@@ -41,34 +41,34 @@ class CartPage(BasePage):
     @allure.step("Clicking Remove from Cart button")
     def click_remove_from_cart_button(self):
         logging.info('Clicking Remove from Cart button')
-        self.find(CartPage.remove_from_cart_button).click()
+        self.find(self.remove_from_cart_button).click()
 
     @allure.step("Checking remove button is Visible")
     def if_remove_button_is_visible(self, driver):
         logging.debug('Waiting for Cart title appeared')
         WebDriverWait(driver, delay).until(EC.presence_of_element_located(CartPage.cart_title))
         logging.info('Checking remove button is Visible')
-        self.find(CartPage.remove_from_cart_button)
+        self.find(self.remove_from_cart_button)
 
     @allure.step("Cleaning Cart")
     def cleaning_cart(self, driver):
         logging.info('Cleaning Cart')
         try:
-            CartPage.if_remove_button_is_visible(self, driver)
-            CartPage.click_remove_from_cart_button(self)
+            self.if_remove_button_is_visible(self, driver)
+            self.click_remove_from_cart_button(self)
         except NoSuchElementException:
             pass
 
-        WebDriverWait(driver, delay).until(EC.presence_of_element_located(CartPage.cart_text))
+        WebDriverWait(driver, delay).until(EC.presence_of_element_located(self.cart_text))
         logging.debug('Waiting empty cart text appeared')
-        assert self.find(CartPage.cart_text).text == CartPage.empty_cart_text
+        assert self.find(self.cart_text).text == self.empty_cart_text
 
     @allure.step("Getting unregistered error message text")
     def get_unregistered_error_message_text(self):
         logging.info('Getting unregistered error message text')
-        return self.find(CartPage.unregistered_error_message).text
+        return self.find(self.unregistered_error_message).text
 
     @allure.step("Saving shopping cart changes")
     def saving_shopping_cart_changes(self):
         logging.info('Saving shopping cart changes')
-        self.find(CartPage.save_changes_button).click()
+        self.find(self.save_changes_button).click()

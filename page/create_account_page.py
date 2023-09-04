@@ -20,9 +20,9 @@ class CreateAccountPage(BasePage):
     @allure.step("Getting Title Create Account Page")
     def get_create_account_title(self):
         logging.info('Getting Title Create Account Page')
-        return self.find(CreateAccountPage.create_account_title).text
+        return self.find(self.create_account_title).text
 
     @allure.step("Searching for fields with label 'required'")
     def search_required_create_account_fields(self):
         logging.info('Searching for fields with label "required"')
-        return self.finds(CreateAccountPage.required_create_account_fields)
+        return self.finds(self.required_create_account_fields)

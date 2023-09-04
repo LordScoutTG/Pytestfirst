@@ -40,17 +40,17 @@ class HomePage(BasePage):
     @allure.step("Verify successful login")
     def success_message_is_visible(self):
         logging.info('Checking success message')
-        return self.find(HomePage.success_message).is_displayed()
+        return self.find(self.success_message).is_displayed()
 
     @allure.step("Clicking on regional settings")
     def reg_settings_change_link_click(self):
         logging.info('Clicking on regional settings')
-        self.find(HomePage.reg_settings_change_link).click()
+        self.find(self.reg_settings_change_link).click()
 
     @allure.step("Clicking on currency selection")
     def currency_selector_click(self):
         logging.info('Clicking on currency selection')
-        self.find(HomePage.currency_selector).click()
+        self.find(self.currency_selector).click()
 
     @allure.step("Finding currency select menu")
     def currency_selector_find(self):
@@ -60,27 +60,27 @@ class HomePage(BasePage):
     @allure.step("Saving currency selection")
     def submit_settings_button_click(self):
         logging.info('Saving currency selection')
-        self.find(HomePage.submit_settings_button).click()
+        self.find(self.submit_settings_button).click()
 
     @allure.step("Searching for euro elements in goods")
     def search_euro_price_symbols(self):
         logging.info('Searching for euro elements in goods')
-        return self.finds(HomePage.euro_price_symbols)
+        return self.finds(self.euro_price_symbols)
 
     @allure.step("Checking if Duck title is visible")
     def duck_title_is_correct(self):
         logging.info('Checking if Duck title is visible')
-        return self.find(HomePage.duck_page_title).text
+        return self.find(self.duck_page_title).text
 
     @allure.step("Searching for ducks with Sale sticker")
     def search_ducks_with_on_sale_sticker(self):
         logging.info('Searching for ducks with Sale sticker')
-        return self.finds(HomePage.duck_with_on_sale_sticker)
+        return self.finds(self.duck_with_on_sale_sticker)
 
     @allure.step("Searching for ducks with cheaper price")
     def search_ducks_with_cheaper_price(self):
         logging.info('Searching for ducks with cheaper price')
-        return self.finds(HomePage.duck_with_cheaper_price)
+        return self.finds(self.duck_with_cheaper_price)
 
     @allure.step("Clicking on Most Popular Duck at Main Page")
     def click_on_most_popular_duck(self, duck_name, driver):
@@ -92,24 +92,24 @@ class HomePage(BasePage):
     @allure.step("Clicking on Cart Button")
     def click_on_cart_button(self):
         logging.info('Clicking on Cart Button')
-        self.find(HomePage.cart_button).click()
+        self.find(self.cart_button).click()
 
     @allure.step("Clicking Account Button")
     def click_on_account_button(self):
         logging.info('Clicking Account Button')
-        self.find(HomePage.account_button).click()
+        self.find(self.account_button).click()
 
     @allure.step("Clicking Login footer link")
     def login_link_click(self):
         logging.info('Clicking Login footer link')
-        self.find(HomePage.login_link).click()
+        self.find(self.login_link).click()
 
     @allure.step("Clicking Customer Service footer link")
     def customer_service_footer_link_click(self):
         logging.info('Clicking Customer Service footer link')
-        self.find(HomePage.customer_service_footer_link).click()
+        self.find(self.customer_service_footer_link).click()
 
     @allure.step("Clicking Create Account footer link")
     def create_account_footer_link_click(self):
         logging.info('Clicking Create Account footer link')
-        self.find(HomePage.create_account_link).click()
+        self.find(self.create_account_link).click()

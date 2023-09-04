@@ -22,19 +22,19 @@ class CustomerServicePage(BasePage):
     @allure.step("Getting Title Customer Service Page")
     def get_customer_service_title(self):
         logging.info('Getting Title Customer Service Page')
-        return self.find(CustomerServicePage.customer_service_title).text
+        return self.find(self.customer_service_title).text
 
     @allure.step("Getting Title Contact Us block")
     def get_contact_us_title(self):
         logging.info('Getting Title Contact Us block')
-        return self.find(CustomerServicePage.contact_us_title).text
+        return self.find(self.contact_us_title).text
 
     @allure.step("Getting Title Reset Password block")
     def get_reset_password_title(self):
         logging.info('Getting Title Reset Password block')
-        return self.find(CustomerServicePage.reset_password_title).text
+        return self.find(self.reset_password_title).text
 
     @allure.step("Searching for fields with label 'required'")
     def search_required_contact_us_fields(self):
         logging.info('Searching for fields with label "required"')
-        return self.finds(CustomerServicePage.required_contact_us_fields)
+        return self.finds(self.required_contact_us_fields)

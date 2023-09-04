@@ -15,4 +15,4 @@ class EditAccountPage(BasePage):
     @allure.step("Getting Title Edit Account Page")
     def get_edit_account_title(self):
         logging.info('Getting Title Edit Account Page')
-        return self.find(EditAccountPage.edit_account_title).text
+        return self.find(self.edit_account_title).text

@@ -15,6 +15,7 @@ from page.acoount_page import AccountPage
 
 delay = 3
 
+
 @allure.epic("Regression Tests")
 @allure.feature("Main Menu Tests")
 class TestUnauthorised:

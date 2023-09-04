@@ -1,7 +1,7 @@
 import logging
 import allure
 import pytest
-from selenium.webdriver.common.by import By
+
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.support.wait import WebDriverWait

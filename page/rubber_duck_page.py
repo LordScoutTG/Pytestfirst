@@ -24,13 +24,14 @@ class RubberDucksPage(BasePage):
         By.XPATH,
         "//table[@class=\"table table-striped table-hover\"]//td[text()[contains(.,'Body')]]/following-sibling::td")
 
-    def get_duck_locator(self, duck_name):
-        return (By.CSS_SELECTOR, "[alt='{}']".format(duck_name))
+    @staticmethod
+    def get_duck_locator(duck_name):
+        return By.CSS_SELECTOR, "[alt='{}']".format(duck_name)
 
     @allure.step("Checking Rubber Ducks title")
     def rubber_duck_title_is_visible(self):
         logging.info("Checking Rubber Ducks title")
-        return self.find(RubberDucksPage.rubber_duck_title).is_displayed()
+        return self.find(self.rubber_duck_title).is_displayed()
 
     @allure.step("Clicking on Duck at Duck Page")
     def click_on_duck(self, duck_name):
@@ -40,34 +41,34 @@ class RubberDucksPage(BasePage):
     @allure.step("Clicking on Duck Quantity Input")
     def click_on_quantity_input(self):
         logging.info("Clicking on Duck Quantity Input")
-        self.find(RubberDucksPage.duck_quantity_input).click()
+        self.find(self.duck_quantity_input).click()
 
     @allure.step("Clicking on Duck Quantity Submit Button")
     def click_on_duck_quantity_submit(self):
         logging.info("Clicking on Duck Quantity Submit Button")
-        self.find(RubberDucksPage.duck_quantity_submit_button).click()
+        self.find(self.duck_quantity_submit_button).click()
 
     @allure.step("Setting Quantity Input")
     def get_quantity_from_input(self, driver):
         logging.info("Setting Quantity Input")
         return int(
-            str(driver.execute_script("return arguments[0].value", self.find(RubberDucksPage.duck_quantity_input))))
+            str(driver.execute_script("return arguments[0].value", self.find(self.duck_quantity_input))))
 
     @allure.step("Set Quantity sending keys")
     def set_quantity_by_keys(self):
         logging.info("Set Quantity sending keys")
-        self.find(RubberDucksPage.duck_quantity_input).clear()
-        self.find(RubberDucksPage.duck_quantity_input).send_keys(str(RubberDucksPage.quantity_order))
+        self.find(self.duck_quantity_input).clear()
+        self.find(self.duck_quantity_input).send_keys(str(self.quantity_order))
 
     @allure.step("Get Quantity value from Cart box")
     def get_quantity_from_cart(self):
         logging.info("Get Quantity value from Cart box")
-        return self.find(RubberDucksPage.cart_quantity).text
+        return self.find(self.cart_quantity).text
 
     @allure.step("Size Options Menu click")
     def size_options_menu_click(self):
         logging.info("Size Options Menu click")
-        self.find(RubberDucksPage.size_options_menu).click()
+        self.find(self.size_options_menu).click()
 
     @allure.step("Choosing small size")
     def choosing_small_size_duck(self, driver):
@@ -92,7 +93,7 @@ class RubberDucksPage(BasePage):
     def assert_stock_status_and_choose_small_duck(self, driver):
         logging.info("Checking if Stock Status Available and choose Small Duck")
         try:
-            self.find(RubberDucksPage.available_stock_status)
+            self.find(self.available_stock_status)
             self.size_options_menu_click()
             self.choosing_small_size_duck(driver)
         except NoSuchElementException:
@@ -102,7 +103,7 @@ class RubberDucksPage(BasePage):
     def assert_stock_status_and_choose_medium_duck(self, driver):
         logging.info("Checking if Stock Status Available and choose Medium Duck")
         try:
-            self.find(RubberDucksPage.available_stock_status)
+            self.find(self.available_stock_status)
             self.choosing_medium_size_duck(driver)
         except NoSuchElementException:
             pass
@@ -111,7 +112,7 @@ class RubberDucksPage(BasePage):
     def assert_stock_status_and_choose_large_duck(self, driver):
         logging.info("Checking if Stock Status Available and choose Large Duck")
         try:
-            self.find(RubberDucksPage.available_stock_status)
+            self.find(self.available_stock_status)
             self.size_options_menu_click()
             self.choosing_large_size_duck(driver)
         except NoSuchElementException:
@@ -120,9 +121,9 @@ class RubberDucksPage(BasePage):
     @allure.step("Checking correct submit button text")
     def get_add_to_cart_button_text(self):
         logging.info("Checking correct submit button text")
-        return self.find(RubberDucksPage.duck_quantity_submit_button).text
+        return self.find(self.duck_quantity_submit_button).text
 
     @allure.step("Getting Duck color from details")
     def get_duck_color_text_from_details(self):
         logging.info("Getting Duck color from details")
-        return self.find(RubberDucksPage.details_duck_body_color).text
+        return self.find(self.details_duck_body_color).text

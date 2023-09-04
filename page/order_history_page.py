@@ -15,4 +15,4 @@ class OrderHistoryPage(BasePage):
     @allure.step("Getting Title Order History Page")
     def get_order_history_page_title(self):
         logging.info("Getting Title Order History Page")
-        return self.find(OrderHistoryPage.order_history_title).text
+        return self.find(self.order_history_title).text

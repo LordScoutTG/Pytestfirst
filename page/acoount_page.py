@@ -19,19 +19,19 @@ class AccountPage(BasePage):
     @allure.step("Getting text from warning message")
     def get_not_logged_in_error(self):
         logging.info('Getting text from warning message')
-        return self.find(AccountPage.alert_message).text
+        return self.find(self.alert_message).text
 
     @allure.step("Getting text from Sign In title")
     def get_sign_in_title_text(self):
         logging.info('Getting text from Sign In title')
-        return self.find(AccountPage.sign_in_title).text
+        return self.find(self.sign_in_title).text
 
     @allure.step("Getting text from Create Account title")
     def get_create_account_title_text(self):
         logging.info('Getting text from Create Account title')
-        return self.find(AccountPage.create_account_title).text
+        return self.find(self.create_account_title).text
 
     @allure.step("Clicking 'lost your password?' link")
     def lost_your_password_link_click(self):
         logging.info('Clicking "lost your password?" link')
-        self.find(AccountPage.lost_your_password_link).click()
+        self.find(self.lost_your_password_link).click()
