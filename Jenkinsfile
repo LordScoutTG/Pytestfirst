@@ -8,7 +8,10 @@ pipeline {
                 }
             }
             steps {
-                sh '''python -m venv env \n pip3 install -r requirements.txt \n sbase install chromedriver latest \n pytest --alluredir=allure_results ./tests'''
+                sh '''python -m venv env
+                        pip3 install -r requirements.txt
+                        sbase install chromedriver latest
+                        pytest --alluredir=allure_results ./tests'''
             }
         }
     }
