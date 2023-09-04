@@ -24,7 +24,7 @@ class TestLogin:
         login_page = LoginPage(driver)
         login_page.open()
         login_page.sign_in_button_find().click()
-        WebDriverWait(driver, delay).until(EC.element_to_be_clickable(login_page.email_input_box))
+        WebDriverWait(driver, delay).until(EC.element_to_be_clickable(LoginPage.email_input_box))
         assert login_page.email_input.is_displayed()
 
     @allure.story("Login tests")
