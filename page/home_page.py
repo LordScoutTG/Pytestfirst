@@ -53,10 +53,9 @@ class HomePage(BasePage):
         self.find(HomePage.currency_selector).click()
 
     @allure.step("Finding currency select menu")
-    @property
     def currency_selector_find(self):
         logging.info('Finding currency select menu')
-        return self.find(HomePage.currency_selector)
+        return self.find(self.currency_selector)
 
     @allure.step("Saving currency selection")
     def submit_settings_button_click(self):

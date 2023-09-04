@@ -11,6 +11,8 @@ from tests.conftest import driver
 delay = 3
 
 
+@allure.epic("Regression Tests")
+@allure.feature("Login Tests")
 class TestLogin:
     correct_login_email = "1123@123.com"
     correct_login_password = "adDA12341"

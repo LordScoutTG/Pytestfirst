@@ -1,7 +1,8 @@
 import logging
-
 import allure
 import pytest
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -17,6 +18,8 @@ from tests.test_login import TestLogin
 delay = 3
 
 
+@allure.epic("Regression Tests")
+@allure.feature("Ducks Tests")
 @pytest.fixture(scope='function', autouse=True)
 def f_wrapper_function(driver):
     login_page = LoginPage(driver)
@@ -60,9 +63,8 @@ class TestDucks:
         WebDriverWait(driver, delay).until(EC.presence_of_element_located(HomePage.currency_selector))
         home_page.currency_selector_click()
         logging.info("Choosing EURO by clicking keys")
-        # select = Select(home_page.currency_selector_find)
-        # select.select_by_value('EUR')
-        ActionChains(driver).send_keys(Keys.ARROW_DOWN).send_keys(Keys.ENTER).perform()
+        select = Select(home_page.currency_selector_find())
+        select.select_by_value('EUR')
         home_page.submit_settings_button_click()
         logging.debug("Waiting for elements on page appeared after saving")
         WebDriverWait(driver, delay).until(EC.presence_of_element_located(HomePage.euro_price_symbols))
@@ -106,7 +108,6 @@ class TestDucks:
             assert rubber_ducks_page.get_quantity_from_input(driver) == i + 2
 
     @allure.story("Ducks shopping tests")
-    # @Flaky
     @allure.description("Checking correct sending keys to Quantity at Duck Page")
     @pytest.mark.parametrize('duck_name', ["Yellow Duck", "Red Duck", "Blue Duck", "Green Duck", "Purple Duck"])
     def test_success_duck_send_keys_quantity(self, duck_name, driver):

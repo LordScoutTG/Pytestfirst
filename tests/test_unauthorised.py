@@ -15,7 +15,8 @@ from page.acoount_page import AccountPage
 
 delay = 3
 
-
+@allure.epic("Regression Tests")
+@allure.feature("Main Menu Tests")
 class TestUnauthorised:
     @allure.story("UnAuthorised tests")
     @allure.description("Checking error unlogined message at Account page")
@@ -100,7 +101,6 @@ class TestUnauthorised:
                    create_account_page.required_create_account_fields_text[i]
 
     @allure.story("Ducks shopping tests")
-    #     @Flaky
     @allure.description("Checking correct warning message 'No First Name' in Shopping form")
     def test_success_warning_message_no_first_name_shopping_form(self, driver):
         logging.debug("Checking correct warning message 'No First Name' in Shopping form")

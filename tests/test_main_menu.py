@@ -9,7 +9,8 @@ from page.order_history_page import OrderHistoryPage
 from page.rubber_duck_page import RubberDucksPage
 from tests.test_login import TestLogin
 
-
+@allure.epic("Regression Tests")
+@allure.feature("Main Menu Tests")
 class TestMainMenu:
     @pytest.fixture(scope='function', autouse=True)
     def f_wrapper_function(self, driver):
