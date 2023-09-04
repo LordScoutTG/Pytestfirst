@@ -9,7 +9,6 @@ pipeline {
             }
             steps {
                 sh 'python -m venv env'
-                sh 'call ./env/Scripts/activate.bat'
                 sh 'pip install requirements.txt'
                 sh 'sbase install chromedriver latest'
                 sh 'pytest --alluredir=allure_results ./tests'
