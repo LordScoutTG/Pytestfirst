@@ -17,12 +17,10 @@ def driver():
     options = Options()
     options.add_argument('--headless=new')
     options.add_argument('--ignore-certificate-errors')
+    options.add_argument("--window-size=1920,1080")
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     chrome_browser = webdriver.Chrome(options=options)
     chrome_browser.implicitly_wait(10)
-    # chrome_option = ChromeOption()
-    # chrome_option.add_argument('--headless')
-    # chrome_option.add_argument("--window-size=1920,1080")
     return chrome_browser
 
 
@@ -40,7 +38,7 @@ def pytest_runtest_makereport(item, call):
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):
+def pytest_runtest_make_report(item, call):
     outcome = yield
     rep = outcome.get_result()
     if rep.when == 'call' and rep.failed:
