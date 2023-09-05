@@ -6,8 +6,6 @@ import pytest
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
 
 
 logging.basicConfig(level=logging.INFO,
@@ -21,7 +19,7 @@ def driver():
     options.add_argument('--ignore-certificate-errors')
     options.add_argument("--window-size=1920,1080")
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    chrome_browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+    chrome_browser = webdriver.Chrome(options=options)
     chrome_browser.implicitly_wait(10)
     return chrome_browser
 
