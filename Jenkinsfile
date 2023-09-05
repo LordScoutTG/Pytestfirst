@@ -9,7 +9,7 @@ pipeline {
             }
             steps {
                 sh '''python -m venv env
-                        pip3 install -r requirements.txt
+                        pip3 install -r requirements.txt --prefix=~/.local -e
                         sbase install chromedriver latest
                         pytest --alluredir=allure_results ./tests'''
             }
