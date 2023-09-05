@@ -10,14 +10,16 @@ from page.rubber_duck_page import RubberDucksPage
 from tests.test_login import TestLogin
 
 
+@pytest.fixture(scope='function', autouse=True)
+def f_wrapper_function(self, driver):
+    login_page = LoginPage(driver)
+    login_page.open()
+    login_page.attempt_login(TestLogin.correct_login_email, TestLogin.correct_login_password, driver)
+
+
 @allure.epic("Regression Tests")
 @allure.feature("Main Menu Tests")
 class TestMainMenu:
-    @pytest.fixture(scope='function', autouse=True)
-    def f_wrapper_function(self, driver):
-        login_page = LoginPage(driver)
-        login_page.open()
-        login_page.attempt_login(TestLogin.correct_login_email, TestLogin.correct_login_password, driver)
 
     @allure.story("Links tests")
     @allure.description("Checking correct Customer Service link click in Main Menu")

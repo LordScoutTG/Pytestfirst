@@ -18,8 +18,6 @@ from tests.test_login import TestLogin
 delay = 3
 
 
-@allure.epic("Regression Tests")
-@allure.feature("Ducks Tests")
 @pytest.fixture(scope='function', autouse=True)
 def f_wrapper_function(driver):
     login_page = LoginPage(driver)
@@ -27,6 +25,8 @@ def f_wrapper_function(driver):
     login_page.attempt_login(TestLogin.correct_login_email, TestLogin.correct_login_password, driver)
 
 
+@allure.epic("Regression Tests")
+@allure.feature("Ducks Tests")
 class TestDucks:
     @allure.story("Ducks shopping tests")
     @allure.description("Checking correct sticker Sale placing")
