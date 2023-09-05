@@ -21,7 +21,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'pytest --alluredir=allure_results ./tests'
+                sh 'python -m pytest -v --tb=no'
             }
             post {
                 always {
