@@ -17,10 +17,10 @@ logging.basicConfig(level=logging.INFO,
 @pytest.fixture
 def driver():
     options = Options()
-    options.add_argument('--headless=new')
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument("--window-size=1920,1080")
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    # options.add_argument('--headless=new')
+    # options.add_argument('--ignore-certificate-errors')
+    # options.add_argument("--window-size=1920,1080")
+    # options.add_experimental_option('excludeSwitches', ['enable-logging'])
     chrome_browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
     chrome_browser.implicitly_wait(10)
     return chrome_browser
