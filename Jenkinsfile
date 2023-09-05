@@ -11,7 +11,7 @@ pipeline {
                 sh '''python -m venv env
                         source env/bin/activate
                         pip3 install -r requirements.txt
-                        sbase install chromedriver latest
+                        pip3 install chromedriver latest
                         pytest --alluredir=allure_results ./tests'''
             }
         }
