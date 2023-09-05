@@ -11,22 +11,8 @@ pipeline {
                 sh '''python -m venv env
                         source env/bin/activate
                         pip3 install -r requirements.txt
-                        pip3 install chromedriver latest'''
-            }
-        }
-        stage('Test') {
-            agent {
-                docker {
-                    image 'qnib/pytest'
-                }
-            }
-            steps {
-                sh 'python -m pytest -v --tb=no'
-            }
-            post {
-                always {
-                    junit 'test-reports/results.xml'
-                }
+                        pip3 install chromedriver latest
+                        pytest --alluredir=allure_results ./tests'''
             }
         }
     }
