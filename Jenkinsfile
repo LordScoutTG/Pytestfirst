@@ -8,7 +8,7 @@ pipeline {
                 }
             }
             steps {
-                sh '''venv env -p python3
+                sh '''python3 -p venv env
                         source env/bin/activate
                         pip3 install -r requirements.txt
                         sbase install chromedriver latest
