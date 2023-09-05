@@ -9,7 +9,7 @@ pipeline {
             }
             steps {
                 sh '''which python3
-                        pip3 install -r requirements.txt --user
+                        sudo -H pip3 install -r requirements.txt
                         sbase install chromedriver latest
                         pytest --alluredir=allure_results ./tests'''
             }
