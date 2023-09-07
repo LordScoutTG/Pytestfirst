@@ -32,4 +32,4 @@ class Dog(Animal):
         if friend.animal is Dog:
             print(f'Я {self.name} лаю с {friend.name}')
         else:
-            print(f'Я {self.name}гонюсь за кошкой {friend.name}')
+            print(f'Я {self.name} гонюсь за кошкой {friend.name}')
