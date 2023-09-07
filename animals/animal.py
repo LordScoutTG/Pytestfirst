@@ -9,7 +9,6 @@ class Animal:
     def animal(self) -> object:
         return type(self)
 
-    @staticmethod
     def voice(self) -> None:
         self.voice()
 
